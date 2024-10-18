@@ -1,11 +1,31 @@
-#
-# This is a Shiny web application. You can run the application by clicking
-# the 'Run App' button above.
-#
-# Find out more about building applications with Shiny here:
-#
-#    https://shiny.posit.co/
-#
+################################################################################
+## simple example
+################################################################################
+
+# library(shiny)
+# 
+# # Define UI for application
+# ui <- fluidPage(
+#   textInput("user_input", "문자열을 입력하세요:", ""),
+#   textOutput("output_text")
+# )
+# 
+# # Define server logic 
+# server <- function(input, output) {
+#   
+#   # Render the concatenated text
+#   output$output_text <- renderText({
+#     paste("사용자가 아래의 문자열을 입력하셨습니다:", input$user_input)  # Concatenate using paste()
+#   })
+# }
+# 
+# # Run the application 
+# shinyApp(ui = ui, server = server)
+
+
+################################################################################
+## API Data Visualization throught Shiny Application
+################################################################################
 
 library(rjson)
 library(httr)
@@ -90,7 +110,6 @@ server <- function(input, output) {
     
     # Plot using the selected Y variable
     ggplot(data = df, aes(x = YEAR, y = .data[[y_var]])) +
-      geom_line(color = "blue", size = 1) +   # Line plot
       geom_point(color = "red", size = 2) +   # Points on the line
       labs(x = "Year", y = y_var, title = paste("YEAR vs.", y_var, "Plot")) +
       theme_minimal()  # A clean theme for better aesthetics
